@@ -61,3 +61,12 @@ services:
       ningxi_network_bridge:
         ipv4_address: 172.16.0.4
 
+  etcd:
+    image: 'bitnami/etcd:${ETCD_VERSION}'
+    container_name: "${CONTAINER_BASE_NAME}_etcd"
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+    ports:
+      - 2379:2379
+      - 2380:2380
