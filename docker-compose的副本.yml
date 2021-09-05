@@ -10,8 +10,8 @@ networks:
 
 services:
   nginx:
-    container_name: "${CONTAINER_BASE_NAME}_nginx"
-    image: daocloud.io/library/nginx:1.12.0-alpine
+    container_name: ${CONTAINER_BASE_NAME}_nginx
+    image: "nginx:${NGINX_VERSION}"
     ports:
       - "80:80"
       - "8088:8080"
@@ -30,7 +30,7 @@ services:
 
   mysql:
     container_name: "${CONTAINER_BASE_NAME}_mysql"
-    image: daocloud.io/library/mysql:5.7
+    image: "mysql:${MYSQL_VERSION}"
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -46,7 +46,7 @@ services:
         ipv4_address: 172.16.0.3
 
   redis:
-    image: daocloud.io/library/redis:3.0.1
+    image: "redis:${REDIS_VERSION}"
     container_name: "${CONTAINER_BASE_NAME}_redis"
     ports:
       - "${REDIS_HOST_PORT}:6379"
@@ -62,7 +62,7 @@ services:
         ipv4_address: 172.16.0.4
 
   etcd:
-    image: "bitnami/etcd:${ETCD_VERSION}"
+    image: 'bitnami/etcd:${ETCD_VERSION}'
     container_name: "${CONTAINER_BASE_NAME}_etcd"
     environment:
       - ALLOW_NONE_AUTHENTICATION=yes
@@ -70,4 +70,3 @@ services:
     ports:
       - 2379:2379
       - 2380:2380
-
