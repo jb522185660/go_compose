@@ -1,1 +1,1 @@
-#Ningxi
+docker-compose up -d
